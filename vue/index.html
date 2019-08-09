@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue实例生命周期函数</title>
+		<script src="./vue.js"></script>
+	</head>
+	
+	<body>
+		<div id="app">hello world</div>
+	</body>
+	
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			beforeCreate: function() {
+				console.log("beforeCreate")
+			}
+		})
+		
+	</script>
+</html>
