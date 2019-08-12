@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>try style</title>
+		<script src="./vue.js"></script>
+		<style>
+			.redFont {
+				color: red;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="app">
+			<ul>
+				<todo-list :class="[name]" :item="item" v-for="item in items"></todo-list>
+			</ul>
+		</div>
+	</body>
+	
+	<script>
+		Vue.component("todoList", {
+			props: ['item'],
+			template: '<li @click="turnRed">{{item}}</li>',
+			methods: {
+				turnRed: function() {
+					vm.name = vm.name === 'redFont' ? '' :'redFont'
+				}
+			}
+		})
+		
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				items: ['jim', '2131312', '21313414'],
+				name: ''
+			}
+		})
+		
+
+	</script>
+</html>

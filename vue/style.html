@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Style</title>
+		<script src='./vue.js'></script>
+		<style>
+			.redFont {
+				color: red;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="app">
+			<div v-on:click="turnRed0"
+			:class="[name]"
+			>
+			touch me!
+			</div>
+			<div v-on:click="turnRed1"
+			v-bind:class="{redFont: isRed}"
+			>
+			touch me!
+			</div>
+			<div :style="styleObj" @click="handleDivClick">
+				Hello
+			</div>
+		</div>
+		
+		
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					isRed: false,
+					name: '',
+					styleObj: {
+						color: "black"
+					}
+				},
+				methods: {
+					turnRed0: function() {
+						// if(this.name === "redFont") {
+						// 	this.name = '';
+						// }else{
+						// 	this.name = 'redFont';
+						// }
+						this.name = this.name === 'redFont'? '' : 'redFont';
+					},
+					turnRed1: function() {
+						this.isRed = !this.isRed;
+					},
+					handleDivClick: function() {
+						this.styleObj.color = this.styleObj.color === "black" ? "red" : "black";
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
