@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>velocityjs</title>
+		<script src="./vue.js"></script>
+		<script src="./velocity.min.js"></script>
+	</head>
+	
+	<body>
+		<div id="root">
+			<transition
+				@before-enter="handleBeforeEnter"
+				@enter="handleEnter"
+			>
+				<h1 v-show="show">good</h1>
+			</transition>
+			<button @click="handleBtnAction">submit</button>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el: '#root',
+				data: {
+					show: true
+				},
+				methods: {
+					handleBtnAction: function() {
+						this.show = !this.show;
+					},
+					handleBeforeEnter: function(el) {
+						el.style.color = 'green'
+						el.style.opacity = 0
+					},
+					handleEnter: function (el, done) {
+						Velocity(el, {opacity: 1}, {duration: 1000, complete: done})
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

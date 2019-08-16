@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css</title>
+		<script src="./vue.js"></script>
+		<style>
+			.v-leave-to,
+			.v-enter {
+				opacity: 0
+			}
+			.v-leave-active,
+			.v-enter-active {
+				transition: opacity 3s
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+		<div id="root">
+			<transition>
+				<h1 v-if="appear">hello world</h1>
+			</transition>
+			<button @click="handleBtn">dala</button>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el: '#root',
+				data: {
+					appear: true
+				},
+				methods: {
+					handleBtn: function() {
+						this.appear = !this.appear
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
